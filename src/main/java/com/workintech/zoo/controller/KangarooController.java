@@ -37,6 +37,9 @@ public class KangarooController {
         if(kangaroos.containsKey(kangaroo.getId())) {
             throw new ZooException("Kangaroo with given id already exist: " + kangaroo.getId(), HttpStatus.BAD_REQUEST);
         }
+        if(kangaroo.getName() == null) {
+            throw new ZooException("Kangaroo's given name cannot be null, here is the id: " + kangaroo.getId(), HttpStatus.BAD_REQUEST);
+        }
         kangaroos.put(kangaroo.getId(), kangaroo);
         return kangaroo;
     }
